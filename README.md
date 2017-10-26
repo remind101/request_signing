@@ -1,5 +1,8 @@
 # RequestSigning
 
+[![Build Status](https://circleci.com/gh/remind101/request_signing.png?circle-token=b945a7d85dbfbd7ef5a1257a985dee1ff3b47015)](https://circleci.com/gh/remind101/request_signing)
+
+
 An extensible implementation of [http request signing spec draft](https://tools.ietf.org/html/draft-cavage-http-signatures-08)
 for Ruby HTTP clients and servers.
 
