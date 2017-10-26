@@ -24,6 +24,7 @@ Add this line to your application's Gemfile:
 
 ```ruby
 gem 'request_signing'
+gem 'request_signing-rack'
 ```
 
 And then execute:
@@ -32,7 +33,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install request_signing
+    $ gem install request_signing request_signing-rack
 
 ## Usage
 

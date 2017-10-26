@@ -1,6 +1,15 @@
-require "bundler/gem_tasks"
 require "rake/testtask"
 require "yard"
+
+require "bundler/gem_helper"
+
+namespace :request_signing do
+  Bundler::GemHelper.install_tasks :name => "request_signing"
+end
+
+namespace :"request_signing-rack" do
+  Bundler::GemHelper.install_tasks :name => "request_signing-rack"
+end
 
 Rake::TestTask.new(:test) do |t|
   t.libs << "test"

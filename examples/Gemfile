@@ -1,0 +1,5 @@
+source 'https://rubygems.org'
+
+gem "request_signing",      "~> 0.1.0"
+gem "request_signing-rack", "~> 0.1.0"
+gem "sinatra",              "~> 2.0"
