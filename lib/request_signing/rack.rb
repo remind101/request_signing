@@ -28,36 +28,37 @@ module RequestSigning
   end
   register_adapter :rack, ->() { Adapters::Rack.new }
 
-  ##
-  # Provides rack middleware for request signature verification
-  #
-  # @example common use case
-  #   key_store = RequestSigning::KeyStores::Static.new(
-  #     "app_1.v1" => ENV["APP_1_PUBKEY"],
-  #     "app_2.v1" => ENV["APP_2_PUBKEY"],
-  #   )
-  #   use RequestSigning::Rack::Middleware, key_store: key_store
-  #
-  # @example custom error handling
-  #   key_store = RequestSigning::KeyStores::Static.new(
-  #     "app_1.v1" => ENV["APP_1_PUBKEY"],
-  #     "app_2.v1" => ENV["APP_2_PUBKEY"],
-  #   )
-  #   logger = Logger.new(STDOUT)
-  #
-  #   use RequestSigning::Rack::Middleware, key_store: key_store do |error, env, app|
-  #     case error
-  #     when RequestSigning::KeyNotFound, RequestSigning::MissingSignatureHeader
-  #       # Useful during transition period while some clients still don't sign requests
-  #       logger.debug("skipping signature verification: #{error}")
-  #       app.call(env)
-  #     else
-  #       logger.error(error)
-  #       [401, { "Content-Type" => "application/json" }, [%q({"error": "signature verification error"})]]
-  #     end
-  #   end
-  ##
   module Rack
+
+    ##
+    # Provides rack middleware for request signature verification
+    #
+    # @example common use case
+    #   key_store = RequestSigning::KeyStores::Static.new(
+    #     "app_1.v1" => ENV["APP_1_PUBKEY"],
+    #     "app_2.v1" => ENV["APP_2_PUBKEY"],
+    #   )
+    #   use RequestSigning::Rack::Middleware, key_store: key_store
+    #
+    # @example custom error handling
+    #   key_store = RequestSigning::KeyStores::Static.new(
+    #     "app_1.v1" => ENV["APP_1_PUBKEY"],
+    #     "app_2.v1" => ENV["APP_2_PUBKEY"],
+    #   )
+    #   logger = Logger.new(STDOUT)
+    #
+    #   use RequestSigning::Rack::Middleware, key_store: key_store do |error, env, app|
+    #     case error
+    #     when RequestSigning::KeyNotFound, RequestSigning::MissingSignatureHeader
+    #       # Useful during transition period while some clients still don't sign requests
+    #       logger.debug("skipping signature verification: #{error}")
+    #       app.call(env)
+    #     else
+    #       logger.error(error)
+    #       [401, { "Content-Type" => "application/json" }, [%q({"error": "signature verification error"})]]
+    #     end
+    #   end
+    ##
     class Middleware
       ##
       # @overload initialize(app, key_store:)

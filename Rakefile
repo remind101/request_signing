@@ -11,6 +11,10 @@ namespace :"request_signing-rack" do
   Bundler::GemHelper.install_tasks :name => "request_signing-rack"
 end
 
+namespace :"request_signing-faraday" do
+  Bundler::GemHelper.install_tasks :name => "request_signing-faraday"
+end
+
 Rake::TestTask.new(:test) do |t|
   t.libs << "test"
   t.libs << "lib"

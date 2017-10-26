@@ -17,6 +17,7 @@ Integrates with the following libraries:
 
 * rack
 * net/http
+* faraday
 
 ## Installation
 
@@ -25,6 +26,7 @@ Add this line to your application's Gemfile:
 ```ruby
 gem 'request_signing'
 gem 'request_signing-rack'
+gem 'request_signing-faraday'
 ```
 
 And then execute:
@@ -33,53 +35,11 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install request_signing request_signing-rack
+    $ gem install request_signing request_signing-rack request_signing-faraday
 
 ## Usage
 
-### Net::HTTP
-
-    key_store = RequestSigning::KeyStores::Static.new(
-      "app_1.v1" => ENV["APP_1_PRIVATE_KEY"],
-      "app_2.v1" => ENV["APP_2_PRIVATE_KEY"],
-    )
-    req = Net::HTTP::Get.new("/foo?bar=baz")
-    req["Date"] = "Thu, 05 Jan 2014 21:31:40 GMT"
-    req["Signature"] =
-      @signer.create_signature!(req, key_id: "app_1.v1", algorithm: "rsa-sha256", headers: %w[(request-target) date host])
-    Net::HTTP.start("http://example.com", 80) do |http|
-      response = http.request(req)
-    end
-
-### Rack
-
-Default:
-
-    key_store = RequestSigning::KeyStores::Static.new(
-      "app_1.v1" => ENV["APP_1_PUBKEY"],
-      "app_2.v1" => ENV["APP_2_PUBKEY"],
-    )
-    use RequestSigning::Rack::Middleware, key_store: key_store
-
-With custom error handler:
-
-    key_store = RequestSigning::KeyStores::Static.new(
-      "app_1.v1" => ENV["APP_1_PUBKEY"],
-      "app_2.v1" => ENV["APP_2_PUBKEY"],
-    )
-    logger = Logger.new(STDOUT)
-
-    use RequestSigning::Rack::Middleware, key_store: key_store do |error, env, app|
-      case error
-      when RequestSigning::KeyNotFound, RequestSigning::MissingSignatureHeader
-        # Useful during transition period while some clients still don't sign requests
-        logger.debug("skipping signature verification: #{error}")
-        app.call(env)
-      else
-        logger.error(error)
-        [401, { "Content-Type" => "application/json" }, [%q({"error": "signature verification error"})]]
-      end
-    end
+See [examples](./examples)
 
 ## Development
 

@@ -20,11 +20,12 @@ module RequestSigning
 
     ##
     # @param adapter [Symbol] name of the library adapter.
-    #   @see [RequestSigning::Adapters]
     # @param key_store [#fetch, #key?] signature verification key store
-    #   @see [RequestSigning::KeyStores::Static]
     #
     # @raise [RequestSigning::UnsupportedAdapter] when the adapter is not registered
+    #
+    # @see RequestSigning::Adapters
+    # @see RequestSigning::KeyStores::Static
     ##
     def initialize(adapter:, key_store:)
       @adapter = RequestSigning.get_adapter(adapter)
@@ -35,7 +36,6 @@ module RequestSigning
     # Verifies request signature
     #
     # @param req - an http request object from the library specified via :adapter
-    #   @see [RequestSigning::Adapters]
     #
     # @raise [RequestSigning::SignatureMismatch] when the signature is invalid
     # @raise [RequestSigning::KeyNotFound] when the key store does not contain the key
@@ -118,11 +118,12 @@ module RequestSigning
   class Signer
     ##
     # @param adapter [Symbol] name of the library adapter.
-    #   @see [RequestSigning::Adapters]
     # @param key_store [#fetch, #key?] signature verification key store
-    #   @see [RequestSigning::KeyStores::Static]
     #
     # @raise [RequestSigning::UnsupportedAdapter] when the adapter is not registered
+    #
+    # @see RequestSigning::Adapters
+    # @see RequestSigning::KeyStores::Static
     ##
     def initialize(adapter:, key_store:)
       @adapter = RequestSigning.get_adapter(adapter)

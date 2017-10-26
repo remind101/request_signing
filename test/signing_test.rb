@@ -16,7 +16,6 @@ class SigningTest < Test
       Content-Type: application/json
       Digest: SHA-256=X48E9qOokqqrvdts8nOJRJN3OWDUoyWxBf7kbu9DBPE=
       Content-Length: 18
-      Signature:
 
       {"hello": "world"}
     HTTP
