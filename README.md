@@ -24,12 +24,13 @@ Integrates with the following libraries:
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add these lines to your application's Gemfile:
 
 ```ruby
 gem 'request_signing'
-gem 'request_signing-rack'
-gem 'request_signing-faraday'
+gem 'request_signing-rack'    # for rack integration
+gem 'request_signing-faraday' # for faraday integration
+gem 'request_signing-ssm'     # for AWS SSM integration
 ```
 
 And then execute:
@@ -38,7 +39,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install request_signing request_signing-rack request_signing-faraday
+    $ gem install request_signing request_signing-rack request_signing-faraday request_signing-ssm
 
 ## Usage
 

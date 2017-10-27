@@ -3,16 +3,17 @@ require "yard"
 
 require "bundler/gem_helper"
 
-namespace :request_signing do
-  Bundler::GemHelper.install_tasks :name => "request_signing"
-end
+gems = [
+  :request_signing,
+  :"request_signing-rack",
+  :"request_signing-faraday",
+  :"request_signing-ssm",
+]
 
-namespace :"request_signing-rack" do
-  Bundler::GemHelper.install_tasks :name => "request_signing-rack"
-end
-
-namespace :"request_signing-faraday" do
-  Bundler::GemHelper.install_tasks :name => "request_signing-faraday"
+gems.each do |g|
+  namespace g do
+    Bundler::GemHelper.install_tasks :name => g.to_s
+  end
 end
 
 Rake::TestTask.new(:test) do |t|
@@ -26,3 +27,9 @@ YARD::Rake::YardocTask.new(:doc) do |t|
 end
 
 task :default => :test
+
+desc "Build and install request_signing and it's plugin gems into system gems"
+task :install => gems.map { |g| "#{g}:install" }
+
+desc "Build and install request_signing and it's plugin gems into system gems without network access"
+task :"install:local" => gems.map { |g| "#{g}:install:local" }

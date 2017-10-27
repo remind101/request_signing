@@ -9,7 +9,7 @@ module RequestSigning
     class Static
 
       ##
-      # Makes a new instance of [RequestSigning::KeyStores::Static] from `keys_str`
+      # Makes a new instance of {RequestSigning::KeyStores::Static} from `keys_str`
       #
       # @param keys_str [String] a list of keys in the form of
       #   `keyId:keySecret,keyId2:keySecret2`
