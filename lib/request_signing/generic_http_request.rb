@@ -6,7 +6,7 @@ module RequestSigning
 
     # HTTP/1.1 request methods
     # @see https://tools.ietf.org/html/rfc7231#section-4.1
-    HTTP_METHODS = %w(get head post put delete connect options trace).freeze
+    HTTP_METHODS = %w(get head post put delete connect options trace patch).freeze
 
     # @api public
     # @param method [String] HTTP request method
