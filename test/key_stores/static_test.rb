@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class StaticKeysStoreTest < Test
+class StaticKeyStoreTest < Test
   test "#fetch returns a key" do
     store = RequestSigning::KeyStores::Static.new("id" => "key")
     assert_equal "key", store.fetch("id")
