@@ -5,7 +5,7 @@ require 'request_signing/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "request_signing-rack"
-  spec.version       = "0.1.0.pre1"
+  spec.version       = "0.1.0.pre2"
   spec.authors       = ["Vlad Yarotsky"]
   spec.email         = ["vlad@remind101.com"]
 
