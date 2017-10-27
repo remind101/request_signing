@@ -2,7 +2,7 @@
 
 [![Gem Version](https://badge.fury.io/rb/request_signing.svg)](https://badge.fury.io/rb/request_signing)
 [![Build Status](https://circleci.com/gh/remind101/request_signing.png?style=shield&circle-token=b945a7d85dbfbd7ef5a1257a985dee1ff3b47015)](https://circleci.com/gh/remind101/request_signing)
-[![Docs](https://img.shields.io/badge/yard-docs-blue.svg)](http://www.rubydoc.info/gems/request_signing)
+[![Docs](https://img.shields.io/badge/yard-docs-blue.svg)](http://www.rubydoc.info/gems/request_signing/RequestSigning)
 
 
 An extensible implementation of [http request signing spec draft](https://tools.ietf.org/html/draft-cavage-http-signatures-08)
@@ -28,13 +28,13 @@ Integrates with the following libraries:
 
 * request_signing-rack
   [![Gem Version](https://badge.fury.io/rb/request_signing.svg)](https://badge.fury.io/rb/request_signing-rack)
-  [![Docs](https://img.shields.io/badge/yard-docs-blue.svg)](http://www.rubydoc.info/gems/request_signing-rack)
+  [![Docs](https://img.shields.io/badge/yard-docs-blue.svg)](http://www.rubydoc.info/gems/request_signing-rack/RequestSigning/Rack/Middleware)
 * request_signing-faraday
   [![Gem Version](https://badge.fury.io/rb/request_signing.svg)](https://badge.fury.io/rb/request_signing-faraday)
-  [![Docs](https://img.shields.io/badge/yard-docs-blue.svg)](http://www.rubydoc.info/gems/request_signing-faraday)
+  [![Docs](https://img.shields.io/badge/yard-docs-blue.svg)](http://www.rubydoc.info/gems/request_signing-faraday/RequestSigning/Faraday/Middleware)
 * request_signing-ssm
   [![Gem Version](https://badge.fury.io/rb/request_signing.svg)](https://badge.fury.io/rb/request_signing-ssm)
-  [![Docs](https://img.shields.io/badge/yard-docs-blue.svg)](http://www.rubydoc.info/gems/request_signing-ssm)
+  [![Docs](https://img.shields.io/badge/yard-docs-blue.svg)](http://www.rubydoc.info/gems/request_signing-ssm/RequestSigning/KeyStores/SSM)
 
 ## Installation
 
