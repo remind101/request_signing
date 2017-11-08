@@ -51,6 +51,7 @@ class SigningTest < Test
     err = assert_raises(RequestSigning::KeyNotFound) do
       @signer.create_signature!(@sample_request, key_id: "bad_key", algorithm: "hmac-sha256", headers: %w[date])
     end
+    assert_equal "bad_key", err.key_id
     assert_match(/bad_key/, err.message)
   end
 

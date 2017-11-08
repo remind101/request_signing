@@ -18,6 +18,7 @@ class SSMKeyStoreTest < Test
     err = assert_raises(RequestSigning::KeyNotFound) do
       @store.fetch("wat")
     end
+    assert_equal "wat", err.key_id
     assert_match(/wat/, err.message)
   end
 

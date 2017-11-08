@@ -1,7 +1,19 @@
 module RequestSigning
 
   # Base class for all errors
-  class Error < StandardError; end
+  class Error < StandardError
+    attr_reader :key_id
+
+    def initialize(*args, key_id: nil)
+      super(*args)
+      @key_id = key_id
+    end
+
+    def message
+      return super unless key_id
+      "#{super}, key_id=#{key_id}"
+    end
+  end
 
   # Key with specified keyId could not be found
   class KeyNotFound < Error; end

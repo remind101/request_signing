@@ -81,9 +81,11 @@ class SignatureVerificationTest < Test
       {"hello": "world"}
     HTTP
 
-    assert_raises(RequestSigning::SignatureMismatch) do
+    err = assert_raises(RequestSigning::SignatureMismatch) do
       @verifier.verify!(req)
     end
+    assert_equal("rsa", err.key_id)
+    assert_match(/rsa/, err.message)
   end
 
   test "raises on invalid signature" do

@@ -62,7 +62,7 @@ module RequestSigning
       string_for_signing = RequestSigning.make_string_for_signing(signature_parameters.headers, verifiable_req)
       signature = decode_signature(signature_parameters.signature)
       unless alg.verify_signature(key, signature, string_for_signing)
-        raise SignatureMismatch
+        raise SignatureMismatch, key_id: signature_parameters.key_id
       end
     end
 

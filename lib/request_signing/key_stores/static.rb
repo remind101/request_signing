@@ -39,7 +39,7 @@ module RequestSigning
       def fetch(key_id)
         @keys.fetch(key_id)
       rescue KeyError
-        raise KeyNotFound, key_id
+        raise KeyNotFound, key_id: key_id
       end
 
       # @param key_id [String] id of the key

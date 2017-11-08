@@ -40,7 +40,7 @@ class FaradayMiddlewareTest < Test
     err = assert_raises(RequestSigning::KeyNotFound) do
       connection.get("/")
     end
-    assert_match(/wat/, err.message)
+    assert_equal "wat", err.key_id
   end
 
   test "raises UnsupportedAlgorithm for unknown algorithms" do
